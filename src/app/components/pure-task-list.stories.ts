@@ -1,17 +1,19 @@
-// src/app/components/task-list.stories.ts
+// src/app/components/pure-task-list.stories.ts
 
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 import { PureTaskListComponent } from './pure-task-list.component';
+import { TaskComponent } from './task.component';
 import { taskData, actionsData } from './task.stories';
-import { ComponentsModule } from './components.module';
 
 export default {
-  title: 'TaskList',
+  title: 'PureTaskList',
   excludeStories: /.*Data$/,
   decorators: [
     moduleMetadata({
-      imports: [CommonModule, ComponentsModule],
+      // imports both components to allow component composition with storybook
+      declarations: [PureTaskListComponent, TaskComponent],
+      imports: [CommonModule],
     }),
   ],
 };
@@ -33,7 +35,7 @@ export const Default = () => ({
   component: PureTaskListComponent,
   template: `
   <div style="padding: 3rem">
-    <app-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
+    <app-pure-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-pure-task-list>
   </div>
 `,
   props: {
@@ -47,7 +49,7 @@ export const WithPinnedTasks = () => ({
   component: PureTaskListComponent,
   template: `
     <div style="padding: 3rem">
-      <app-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
+      <app-pure-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-pure-task-list>
     </div>
   `,
   props: {
@@ -60,7 +62,7 @@ export const WithPinnedTasks = () => ({
 export const Loading = () => ({
   template: `
         <div style="padding: 3rem">
-          <app-task-list [tasks]="[]" loading="true" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
+          <app-pure-task-list [tasks]="[]" loading="true" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-pure-task-list>
         </div>
       `,
 });
@@ -68,7 +70,7 @@ export const Loading = () => ({
 export const Empty = () => ({
   template: `
         <div style="padding: 3rem">
-          <app-task-list [tasks]="[]" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
+          <app-pure-task-list [tasks]="[]" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-pure-task-list>
         </div>
       `,
 });
