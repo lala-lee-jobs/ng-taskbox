@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../models/task.model';
 
 @Component({
-  selector: 'app-task-list',
+  selector: 'app-pure-task-list',
   template: `
     <div class="list-items">
       <app-task
@@ -30,7 +30,7 @@ import { Task } from '../models/task.model';
     </div>
   `,
 })
-export class TaskListComponent implements OnInit {
+export class PureTaskListComponent implements OnInit {
   tasksInOrder: Task[] = [];
   @Input() loading = false;
 

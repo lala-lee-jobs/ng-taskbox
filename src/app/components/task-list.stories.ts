@@ -2,7 +2,7 @@
 
 import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
-import { TaskListComponent } from './task-list.component';
+import { PureTaskListComponent } from './pure-task-list.component';
 import { taskData, actionsData } from './task.stories';
 import { ComponentsModule } from './components.module';
 
@@ -30,7 +30,7 @@ export const withPinnedTasksData = [
 ];
 // default TaskList state
 export const Default = () => ({
-  component: TaskListComponent,
+  component: PureTaskListComponent,
   template: `
   <div style="padding: 3rem">
     <app-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
@@ -44,7 +44,7 @@ export const Default = () => ({
 });
 // tasklist with pinned tasks
 export const WithPinnedTasks = () => ({
-  component: TaskListComponent,
+  component: PureTaskListComponent,
   template: `
     <div style="padding: 3rem">
       <app-task-list [tasks]="tasks" (onPinTask)="onPinTask($event)" (onArchiveTask)="onArchiveTask($event)"></app-task-list>
